@@ -5,10 +5,10 @@ const music = new Audio('./audio/music.mp3');
 // variables declaration
 
 const COLOR_SPACE = "black";
-const COLOR_STARS = "white";
+const COLOR_STARS = "#d4cfba";
 const STAR_NUM = 200;
-const STAR_SIZE = 0.005;
-let START_SPEED = 0.022;
+const STAR_SIZE = 0.004;
+let START_SPEED = 0.010;
 const MUTE_ICON =`<i class="fas fa-volume-mute"></i>`
 const PLAY_ICON = `<i class="fa fa-volume-up"></i>`
 let canvas = document.createElement("canvas");
@@ -102,11 +102,16 @@ immersion.addEventListener("click",()=>{
 //disable-enable buttons on fullscreen 
 document.addEventListener('fullscreenchange',()=>{
     if(document.fullscreenElement){
+        // loop(e
+        canvas.width=window.innerWidth
+        canvas.height=window.innerHeight
         immersion.style.opacity ="0";
         speedSlider.style.opacity ="0"
         musicButton.style.opacity ="0"
 
     }else{
+        canvas.width=window.innerWidth
+        canvas.height=window.innerHeight
 
         immersion.style.opacity ="1";
         speedSlider.style.opacity ="1"

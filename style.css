@@ -1,5 +1,7 @@
 body {
     margin:0;
+    /* padding: 0; */
+    /* overflow: hidden; */
 }
 
 canvas {
@@ -16,18 +18,26 @@ justify-items: center;
  position:absolute;
  z-index: 2;
 }
-.slider {
-    --webkit-appearance:none;
-    /* appearance: none; */
+/* .slider {
+
     overflow: hidden;
     width: 10%;
     outline: none;
     opacity: 0.7;
     transition: opacity .2s;
     background-color: red;
+} */
+input[type=range]{
+    /* margin-top:2px; */
+    /* padding:1px; */
+    -webkit-appearance: none;
+    width: 5%;
+    background-color:rgba(150, 150, 150, 0.2); 
+    border: none;
+    border-radius: 20px;
 }
 .btn{
-    width: 10%;
+    width: 5%;
     outline:none;
     border:none;
     margin-bottom: 2px;
@@ -35,7 +45,7 @@ justify-items: center;
     background-color: rgba(150, 150, 150, 0.2);
     border-radius: 20px;
     color:white;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     opacity: 1;
 }
 
