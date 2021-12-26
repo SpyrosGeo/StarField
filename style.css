@@ -36,6 +36,17 @@ input[type=range]{
     border: none;
     border-radius: 20px;
 }
+/* input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    background-color: var(--SliderColor);
+    overflow: visible;
+    cursor: pointer;
+    color: red;
+
+} */
 .btn{
     width: 5%;
     outline:none;
