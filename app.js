@@ -1,10 +1,12 @@
+const speedSlider = document.getElementById("speedRange")
+console.log(typeof(speedSlider.value))
 // variables declaration
 
 const COLOR_SPACE = "black";
 const COLOR_STARS = "white";
 const STAR_NUM = 200;
 const STAR_SIZE = 0.005;
-const START_SPEED = 0.05;
+let START_SPEED = 0.05;
 
 let canvas = document.createElement("canvas");
 
@@ -54,9 +56,35 @@ const loop = (timeNow) => {
         ctx.beginPath();
         ctx.arc(stars[i].x,stars[i].y,stars[i].r,0, Math.PI *2)
         ctx.fill()
+        // update the X position of stars
+
+        stars[i].x += stars[i].xv *timeDelta *0.001;
+        //reposition the star if it goes offscreen
+        if (stars[i].x <0 -stars[i].r){
+            stars[i].x = canvas.width + stars[i].r;
+
+        }else if(stars[i].x >canvas.width+stars[i].r){
+            stars[i].x = 0 - stars[i].r;
+
+        }
+        // update the Y position of stars
+
+        stars[i].y += stars[i].yv *timeDelta *0.001;
+        //reposition the star if it goes offscreen
+        if (stars[i].y <0 -stars[i].r){
+            stars[i].y = canvas.height + stars[i].r;
+
+        }else if(stars[i].y >canvas.height+stars[i].r){
+            stars[i].y = 0 - stars[i].r;
+
+        }
     }
+    //CAll next frame
+
+    requestAnimationFrame(loop)
 
 }
+
 
 //animation loop
 let timeDelta, timeLast = 0;

@@ -4,5 +4,24 @@ body {
 
 canvas {
     display: block;
-    
+    position:absolute;
+
+}
+.slidercontainer {
+ width:100%;
+ position:absolute;
+ z-index: 2;
+}
+.slider {
+    --webkit-appearance:none;
+    /* appearance: none; */
+    width: 10%;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s
+
+}
+
+.slider:hover{
+    opacity:1;
 }
