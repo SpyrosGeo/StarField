@@ -1,13 +1,16 @@
 const speedSlider = document.getElementById("speedRange")
-console.log(typeof(speedSlider.value))
+const immersion = document.querySelector("#immersion")
+const musicButton = document.querySelector("#music")
+const music = new Audio('./audio/music.mp3');
 // variables declaration
 
 const COLOR_SPACE = "black";
 const COLOR_STARS = "white";
 const STAR_NUM = 200;
 const STAR_SIZE = 0.005;
-let START_SPEED = 0.05;
-
+let START_SPEED = 0.022;
+const MUTE_ICON =`<i class="fas fa-volume-mute"></i>`
+const PLAY_ICON = `<i class="fa fa-volume-up"></i>`
 let canvas = document.createElement("canvas");
 
 
@@ -89,3 +92,41 @@ const loop = (timeNow) => {
 //animation loop
 let timeDelta, timeLast = 0;
 requestAnimationFrame(loop)
+
+immersion.addEventListener("click",()=>{
+    document.body.requestFullscreen()
+},false)
+
+
+//Event Listeners
+//disable-enable buttons on fullscreen 
+document.addEventListener('fullscreenchange',()=>{
+    if(document.fullscreenElement){
+        immersion.style.opacity ="0";
+        speedSlider.style.opacity ="0"
+        musicButton.style.opacity ="0"
+
+    }else{
+
+        immersion.style.opacity ="1";
+        speedSlider.style.opacity ="1"
+        musicButton.style.opacity ="1"
+        
+    }
+})
+
+speedSlider.addEventListener('change',()=>{
+    music.volume =+speedSlider.value /100
+})
+
+//music button 
+musicButton.addEventListener('click',()=>{
+    if(musicButton.innerHTML===MUTE_ICON){
+        
+        musicButton.innerHTML = PLAY_ICON 
+        music.pause()
+    }else{
+        music.play()
+        musicButton.innerHTML=MUTE_ICON
+    }
+})
